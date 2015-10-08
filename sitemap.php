@@ -13,6 +13,15 @@ and open the template in the editor.
 
         <h1> Meaghan Winter's CS 148 Assignments </h1>
         <p><a href="tryme.php/">Tryme</a></p>
+
+        <h2> Assignment 3.0 SQL Join</h2>
+        <ol><li><a href="assignment3.0/join.php">Join.php</a></li>
+            <ol><li><a href = "assignment2.0/q01.php">q01</a></li></ol>
+        </ol>
+
+        <h2>Friday Assignment 10/2/15</h2>
+        <a href ="misc/friday.php">Friday 10/2/15</a>
+
         <h2> Assignment 2.0 SELECT</h2>
         <ol><li><a href="assignment2.0/select.php">Select.php</a></li>
             <ol><li><a href = "assignment2.0/q01.php">q01</a></li>
