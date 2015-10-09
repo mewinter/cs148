@@ -11,8 +11,8 @@ include "top.php";
 
 //now print out each record
 $columns = 1;
-    $query = 'SELECT pmkNetId FROM tblTeachers';
-    $info2 = $thisDatabaseReader->select($query, "", 0, 0, 0, 0, false, false);
+    $query = 'SELECT DISTINCT fldCourseName FROM tblCourses, tblEnrolls WHERE tblCourses.pmkCourseId = tblEnrolls.fnkCourseId AND tblEnrolls.fldGrade = 100 ORDER BY tblCourses.fldCourseName';
+    $info2 = $thisDatabaseReader->select($query, "", 1, 2, 0, 0, false, false);
     $highlight = 0; // used to highlight alternate rows
     print '<p><b>Total Records: ' . count($info2) . '</b></p>';
     print '<p><b>SQL: ' . $query . '</b></p>';

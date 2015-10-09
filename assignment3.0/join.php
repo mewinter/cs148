@@ -8,7 +8,7 @@
 
 include "top.php";?>
 
-<ol><li>q01.<a href = "q01.php">SQL:</a>SELECT fldFirstName, fldLastName, fldPhone FROM tblTeachers</li>
+<ol><li>q01.<a href = "q01.php">SQL:</a>SELECT DISTINCT fldCourseName FROM tblCourses, tblEnrolls WHERE tblCourses.pmkCourseId = tblEnrolls.fnkCourseId AND tblEnrolls.fldGrade = 100 ORDER BY tblCourses.fldCourseName</li>
     <li>q02.<a href = "q02.php">SQL:</a>SELECT fldCourseName FROM tblCourses WHERE fldCourseName like "Introduction%"</li>
     <li>q03.<a href="q03.php">SQL:</a>SELECT * FROM tblSections WHERE time(fldStart) = time("13:10:00") AND fldBuilding like "KALKIN%" </li>
     <li>q04.<a href="q04.php">SQL:</a>SELECT * FROM tblCourses WHERE fldCourseName LIKE "Database Design for the Web" </li>
