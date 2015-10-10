@@ -8,14 +8,15 @@
 
 include "top.php";
 
-
+if(isset($_GET['start'])){
+        $start= (int) $_GET ["start"];
+}
 //now print out each record
 $columns = 8;
-$query = "SELECT pmkStudentId,fldFirstName, fldLastName, fldStreetAddress, fldCity, fldState, fldZip, fldGender "
-        . "FROM tblStudents ORDER BY fldLastName, fldFirstName LIMIT 1000, 10";
+$query = "SELECT * FROM tblStudents ORDER BY fldLastName, fldFirstName LIMIT 10, " . $start;
 
-$info2 = $thisDatabaseReader->testquery($query, "", 0, 1, 0, 0, false, false);
 $info2 = $thisDatabaseReader->select($query, "", 0, 1, 0, 0, false, false);
+// $info2 = $thisDatabaseReader->testquery($query, "", 0, 1, 0, 0, false, false);
 
 $highlight = 0; // used to highlight alternate rows
 $fields = array_keys($info[0]);
