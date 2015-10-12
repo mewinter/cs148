@@ -10,13 +10,16 @@ include "top.php";
 
 
 //now print out each record
-$columns = 5;
-    $query = 'SELECT * FROM tblCourses WHERE fldCourseName LIKE "Database Design for the Web"' ;
-    $info2 = $thisDatabaseReader->select($query, "", 1, 0, 2, 0, false, false);
+$columns = 3;
+    $query = 'SELECT fnkSectionId, fldFirstName, fldLastName FROM tblEnrolls '
+            . 'JOIN tblStudents on tblEnrolls.fnkStudentId = tblStudents.pmkStudentId '
+            . 'WHERE tblEnrolls.fnkCourseId = 392 ORDER BY tblEnrolls.fnkSectionId, fldLastName, fldFirstName';
+    $info2 = $thisDatabaseReader->testquery($query, "", 1, 1, 0, 0, false, false);
+    $info2 = $thisDatabaseReader->select($query, "", 1, 1, 0, 0, false, false);
     $highlight = 0; // used to highlight alternate rows
-    print '<p><b>Total Records: ' . count($info2) . '</b></p>';
+    print '<article><p><b>Total Records: ' . count($info2) . '</b></p>';
     print '<p><b>SQL: ' . $query . '</b></p>';
-    print '<table>';
+    print '<p><table><th>CRN</th><th>First Name</th><th>Last Name</th>';
     foreach ($info2 as $rec) {
         $highlight++;
         if ($highlight % 2 != 0) {
@@ -31,6 +34,6 @@ $columns = 5;
         print '</tr>';
     }
     // all done
-    print '</table>';
+    print '</table></article>';
 include "footer.php";
 ?>

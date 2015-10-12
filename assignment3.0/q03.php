@@ -10,13 +10,14 @@ include "top.php";
 
 
 //now print out each record
-$columns = 12;
-    $query = 'SELECT * FROM tblSections WHERE time(fldStart) = time("13:10:00") AND fldBuilding like "KALKIN%"';
-    $info2 = $thisDatabaseReader->select($query, "", 1, 1, 4, 0, false, false);
+$columns = 4;
+    $query = 'SELECT DISTINCT fldDays, fldStart, fldStop FROM tblSections JOIN tblTeachers ON tblSections.fnkTeacherNetId = tblTeachers.pmkNetId WHERE tblTeachers.pmkNetId = "jlhorton" ORDER BY tblSections.fldStart';
+    $info2 = $thisDatabaseReader->testquery($query, "", 1, 1, 2, 0, false, false);
+    $info2 = $thisDatabaseReader->select($query, "", 1, 1, 2, 0, false, false);
     $highlight = 0; // used to highlight alternate rows
-    print '<p><b>Total Records: ' . count($info2) . '</b></p>';
+    print '<article><p><b>Total Records: ' . count($info2) . '</b></p>';
     print '<p><b>SQL: ' . $query . '</b></p>';
-    print '<table>';
+    print '<p><table><th>Course Name</th><th>Days</th><th>Start Time</th><th>End Time</th>';
     foreach ($info2 as $rec) {
         $highlight++;
         if ($highlight % 2 != 0) {
@@ -31,6 +32,6 @@ $columns = 12;
         print '</tr>';
     }
     // all done
-    print '</table>';
+    print '</table></article>';
 include "footer.php";
 ?>

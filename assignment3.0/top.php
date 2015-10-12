@@ -5,9 +5,9 @@ require_once('lib/custom-functions.php');
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>UVM Course Guide</title>
+        <title>Queries</title>
         <meta charset="utf-8">
-        <meta name="author" content="Your UVM Course Guide">
+        <meta name="author" content="Meaghan Winter">
         <meta name="description" content="The guide to potential classes UVM 
               Students can take and other important information">
 

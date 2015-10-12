@@ -10,13 +10,13 @@ include "top.php";
 
 
 //now print out each record
-$columns = 1;
-    $query = 'SELECT fldCourseName FROM tblCourses WHERE fldCourseName LIKE "%data%" AND NOT fldDepartment LIKE "cs"' ;
-    $info2 = $thisDatabaseReader->select($query, "", 1, 2, 4, 0, false, false);
+$columns = 3;
+    $query = 'SELECT fldFirstName, fldPhone, fldSalary FROM tblTeachers WHERE fldSalary < (SELECT AVG(fldSalary) FROM tblTeachers)';
+    $info2 = $thisDatabaseReader->select($query, "", 1, 0, 0, 1, false, false);
     $highlight = 0; // used to highlight alternate rows
-    print '<p><b>Total Records: ' . count($info2) . '</b></p>';
+    print '<article><p><b>Total Records: ' . count($info2) . '</b></p>';
     print '<p><b>SQL: ' . $query . '</b></p>';
-    print '<table>';
+    print '<p><table><th>First Name</th><th>Phone Number</th><th>Salary</th>';
     foreach ($info2 as $rec) {
         $highlight++;
         if ($highlight % 2 != 0) {
@@ -31,6 +31,6 @@ $columns = 1;
         print '</tr>';
     }
     // all done
-    print '</table>';
+    print '</table></article>';
 include "footer.php";
 ?>

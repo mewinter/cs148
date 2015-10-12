@@ -10,13 +10,22 @@ include "top.php";
 
 
 //now print out each record
-$columns = 2;
-    $query = 'SELECT fldFirstName, fldLastName FROM tblTeachers WHERE pmkNetID LIKE "r%o"' ;
-    $info2 = $thisDatabaseReader->select($query, "", 1, 0, 2, 0, false, false);
+$columns = 3;
+    $query = 'SELECT tblTeachers.fldFirstName, tblTeachers.fldLastName,  count(tblStudents.fldFirstName) as total
+FROM tblSections
+JOIN tblEnrolls on tblSections.fldCRN  = tblEnrolls.`fnkSectionId`
+JOIN tblStudents on pmkStudentId = fnkStudentId
+JOIN tblTeachers on tblSections.fnkTeacherNetId=pmkNetId
+WHERE fldType != "LAB"
+group by fnkTeacherNetId
+ORDER BY total desc
+';
+    $info2 = $thisDatabaseReader->testquery($query, "", 0, 0, 0, 0, false, false);
+    $info2 = $thisDatabaseReader->select($query, "", 0, 0, 0, 0, false, false);
     $highlight = 0; // used to highlight alternate rows
-    print '<p><b>Total Records: ' . count($info2) . '</b></p>';
+    print '<article><p><b>Total Records: ' . count($info2) . '</b></p>';
     print '<p><b>SQL: ' . $query . '</b></p>';
-    print '<table>';
+    print '<p><table><th>First Name</th><th>Last Name</th><th>Total</th>';
     foreach ($info2 as $rec) {
         $highlight++;
         if ($highlight % 2 != 0) {
@@ -31,6 +40,6 @@ $columns = 2;
         print '</tr>';
     }
     // all done
-    print '</table>';
+    print '</table></article>';
 include "footer.php";
 ?>
