@@ -14,7 +14,6 @@ $columns = 3;
     $query = 'SELECT fnkSectionId, fldFirstName, fldLastName FROM tblEnrolls '
             . 'JOIN tblStudents on tblEnrolls.fnkStudentId = tblStudents.pmkStudentId '
             . 'WHERE tblEnrolls.fnkCourseId = 392 ORDER BY tblEnrolls.fnkSectionId, fldLastName, fldFirstName';
-    $info2 = $thisDatabaseReader->testquery($query, "", 1, 1, 0, 0, false, false);
     $info2 = $thisDatabaseReader->select($query, "", 1, 1, 0, 0, false, false);
     $highlight = 0; // used to highlight alternate rows
     print '<article><p><b>Total Records: ' . count($info2) . '</b></p>';

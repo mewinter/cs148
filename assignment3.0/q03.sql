@@ -1,1 +1,1 @@
-SELECT * FROM tblSections WHERE time(fldStart) = time("13:10:00") AND fldBuilding like "KALKIN%"
+SELECT DISTINCT fldDays, fldStart, fldStop FROM tblSections JOIN tblTeachers ON tblSections.fnkTeacherNetId = tblTeachers.pmkNetId WHERE tblTeachers.pmkNetId = "jlhorton" ORDER BY tblSections.fldStart

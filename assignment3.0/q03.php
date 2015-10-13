@@ -12,7 +12,6 @@ include "top.php";
 //now print out each record
 $columns = 4;
     $query = 'SELECT DISTINCT fldDays, fldStart, fldStop FROM tblSections JOIN tblTeachers ON tblSections.fnkTeacherNetId = tblTeachers.pmkNetId WHERE tblTeachers.pmkNetId = "jlhorton" ORDER BY tblSections.fldStart';
-    $info2 = $thisDatabaseReader->testquery($query, "", 1, 1, 2, 0, false, false);
     $info2 = $thisDatabaseReader->select($query, "", 1, 1, 2, 0, false, false);
     $highlight = 0; // used to highlight alternate rows
     print '<article><p><b>Total Records: ' . count($info2) . '</b></p>';
